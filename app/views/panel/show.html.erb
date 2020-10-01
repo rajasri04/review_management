@@ -1,0 +1,70 @@
+  <form>
+            <input type="text" placeholder="Search.." name="search" style={width:50%;}>
+            <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <br>
+  <br>
+  <div class="studentlist">
+      <table class="table table-responsive table-striped">
+          <thead>
+          <tr>
+              <th>Project details</th>
+              <th>Student id</th>
+              <th>Student name</th>
+              <th>Guided by</th>
+              <th>Feedback</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @projects.each do |p| %>
+          <% p.students.each do |stu| %>
+          <tr>
+            <td>
+              <div class="ui list">
+                <span class="item">
+                  <b>Title: </b>
+                   <%=p.name%>
+                </span><br>
+                <span class="item"><b>Description: </b>
+                  <%=p.description%>
+                </span>
+              </div>
+            </td>
+
+              <td>
+              <div class="ui list">
+                <span class="item">
+                  <b></b>
+                   <%=stu.reg_no%>
+                </span>
+
+              </div>
+              </td>
+              <td>
+               <div class="ui list">
+                <span class="item">
+                  <b></b>
+                   <%=stu.name%>
+                </span>
+
+              </div>
+            </td>
+
+              <td><%=p.staff.name if p.staff != nil %></td>
+              <td>
+                <a href= <%= new_staff_student_progress_path(staff_id: params[:staff_id] , student_id: stu.id) %> >
+                    Fill feedback
+                </a><br>
+
+              </td>
+              <td>
+                 <td><%= link_to 'Profile',student_path(stu.id)%></td>
+              </td>
+
+          </tr>
+         <% end %>
+         <% end %>
+          </tbody>
+      </table>
+  </div>

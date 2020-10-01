@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Staffs</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Staff Name</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relations.each do |relation| %>
+      <tr>
+        <td><%= relation.student.name %></td>
+        <td><%= relation.staff.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Allotment', new_relation_path %>

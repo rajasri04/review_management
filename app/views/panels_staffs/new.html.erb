@@ -1,0 +1,25 @@
+<%= form_for(@panelstaff,url: panels_staffs_path) do |f| %>
+  <% if @panelstaff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panelstaff.errors.count, "error") %> prohibited relations from being saved:</h2>
+      <ul>
+      <% @panelstaff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Staff_emp_id %><br>
+    <%= f.text_field :emp_id %>
+  </div>
+  <div class="field">
+  <%= f.select(:panel_id, [['IMAGE PROCESSING', 1], ['WEBAPPS', 2], ['NETWORKS', 3],['SPEECH PROCESSING' , 4]]) %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "ALLOT"%>
+  </div>
+<% end %>

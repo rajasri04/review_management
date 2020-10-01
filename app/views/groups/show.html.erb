@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Team Members</strong>
+  <hr>
+  <% c=0%>
+  <%@group.students.each do |gs|%>
+    <% c+=1 %>
+    <p>
+      <strong>Member <%=c%>: </strong>
+      <p><%= gs.name %><br>
+      <%= gs.reg_no %></p>
+    </p>
+    <hr>
+  <%end%>
+</p>
+<%if current_student%>
+  <%= link_to "Add Team member", students_path %><br>
+  <%= link_to "Send request to staff and confirm the project", new_student_message_path(current_student) %>
+<%end%>

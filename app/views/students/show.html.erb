@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Reg no:</strong>
+  <%= @student.reg_no %>
+</p>
+<%if @project!= nil%>
+<h3><b>Projects_information</b></h3>
+<br>
+<p>
+<strong>Project title:</strong>
+<%= @project.name%>
+</p>
+<p>
+<strong>Project description:</strong>
+<%= @project.description%>
+</p>
+<%= link_to 'Edit Project details', edit_student_project_path(@student.id,@project.id) if current_student%>
+<%else%>
+<p>
+<strong><%= link_to 'Enter Project details', new_student_project_path(@student.id) if current_student %></strong>
+<p>
+<%end%>
+<br>
+<%if signed_in? && current_student %>
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
+<%= link_to 'Display Marks',marksdisplay_student_path(@student) %>
+<%end%>
+<%= render 'students/abstract_status'%>

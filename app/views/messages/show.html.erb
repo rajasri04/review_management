@@ -1,0 +1,17 @@
+<strong>We request you as our guide</strong>
+<%= render 'groups/show' %>
+<h3>Project information</h3>
+<% prname= @message.project_name %>
+<% prdes= @message.project_description %>
+<p>
+  <strong>Project Name:</strong>
+  <%= prname %>
+</p>
+
+<p>
+  <strong>Description:</strong><br>
+  <%= prdes%>
+</p>
+
+
+<%=button_to 'ACCEPT' , projects_path, params: {staff_id: current_user.id, group_id: @group.id, panel_id: current_user.panels.first.id , name: prname , description: prdes}, method: :post,class: "btn btn-sm"  %>

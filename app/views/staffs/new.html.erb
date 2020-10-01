@@ -1,0 +1,11 @@
+<h1> To upload bunch of staff</h1>
+<%= form_for(@staff) do |f| %>
+<%= f.file_field :file %><br>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+<h1>New Staff</h1>
+<%= render 'form' %>
+
+<%= link_to 'Back', staffs_path %>

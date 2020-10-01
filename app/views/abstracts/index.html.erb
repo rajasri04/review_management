@@ -1,0 +1,61 @@
+
+<h1>List of students to approve the abstract</h1>
+<br>
+<br>
+<table class = "table table-bordered table-striped">
+  <%if @students!=nil %>
+   <thead>.
+      <tr>
+         <th>StudentName</th>
+         <th>Project Name</th>
+         <th> </th>
+      </tr>
+   </thead>
+
+   <tbody>
+
+      <% @students.each do |s| %>
+          <% @abstracts = s.project.abstracts if s.project.present? %>
+          <% @abstracts.each do |a| %>
+          <% if a.approved == nil%>
+          <tr>
+            <td><%= s.name %></td>
+            <td><%= s.project.name %> </td>
+            <td><%= link_to 'show',staff_abstract_path(@staff.id,a.id) %></td>
+         </tr>
+         <%end%>
+        <%end%>
+      <% end %>
+
+   </tbody>
+   <%end%>
+   <%if current_user.admin? && params[:staff_id] == nil%>
+   <thead>.
+      <tr>
+         <th>Group Name</th>
+         <th>Project Name</th>
+         <th>Approved_by </th>
+         <th>Abstract Uploaded at</th>
+         <th>Abstract Approved at</th>
+         <th></th>
+      </tr>
+   </thead>
+
+   <tbody>
+          <% @abstracts.each do |a| %>
+            <%@project = a.project%>
+            <% if a.approved == true && a.final_approval != true%>
+              <tr>
+                <td><%= @project.name%></td>
+                <td><%= @project.name %> </td>
+                <td><%= @project.staff.name %> </td>
+                <td><%= a.created_at.in_time_zone("Chennai")%></td>
+                <td><%= a.updated_at.in_time_zone("Chennai")%></td>
+                <td><%= link_to 'show',a %></td>
+             </tr>
+           <%end%>
+         <%end%>
+   </tbody>
+
+   <%end%>
+</table>

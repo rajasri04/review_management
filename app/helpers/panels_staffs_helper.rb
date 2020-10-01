@@ -1,0 +1,2 @@
+module PanelsStaffsHelper
+end

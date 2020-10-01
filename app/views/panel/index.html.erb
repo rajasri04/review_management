@@ -1,0 +1,10 @@
+<h1>Listing Panels</h1>
+<ul>
+    <% @panels.each do |panel| %>
+        <li><h3><%= link_to panel.name,staff_panel_path(params[:staff_id],panel.id)%></h3></li>
+    <% end %>
+</ul>
+<ul>
+<% if @panels.empty? %>
+<h3> Contact admin</h3>
+<%end%>

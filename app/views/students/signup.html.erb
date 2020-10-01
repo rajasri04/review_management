@@ -1,0 +1,28 @@
+<%= form_for(@student,url: signup_students_path) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password%>
+    <%= f.password_field :password%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign Up"%>
+  </div>
+  <br>
+  <%= link_to "Already User!", signin_path, class: "btn btn-large" %>
+<% end %>

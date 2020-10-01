@@ -1,0 +1,65 @@
+
+  <form>
+            <input type="text" placeholder="Search.." name="search" style={width:50%;}>
+            <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <br>
+  <br>
+    <%if current_user.admin?%>
+       <%=  link_to 'Download as Excel', displaystudent_staff_path(current_user,format: :xls)%>
+    <% end %>
+  <div class="studentlist">
+      <table class="table table-responsive table-striped">
+          <thead>
+          <tr>
+              <th>Student id</th>
+              <th>Student name</th>
+              <th>Project</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @students.each do |p| %>
+          <tr>
+              <td>
+              <div class="ui list">
+                <span class="item">
+                  <b></b>
+                   <%=p.reg_no%>
+                </span>
+
+              </div>
+              </td>
+              <td>
+               <div class="ui list">
+                <span class="item">
+                  <b></b>
+                   <%=p.name%>
+                </span>
+
+              </div>
+            </td>
+            <td>
+            <div class="ui list">
+              <span class="item">
+                <b>Title: </b>
+                 <%=p.project.name%>
+              </span><br>
+              <span class="item"><b>Description: </b>
+                <%=p.project.description%>
+              </span>
+              </div>
+              </td>
+
+
+              <td>
+                <a href= <%= marksdisplay_student_path(id: p.id)%> >
+                    Marks of the student
+                </a><br>
+              </td>
+          </tr>
+
+         <% end %>
+          </tbody>
+      </table>
+  </div>

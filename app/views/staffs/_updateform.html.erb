@@ -1,0 +1,36 @@
+<div class="row">
+<div class="span6 offset3">
+<%= form_for(@staff,url: signup_staffs_path, class: "form-horizontal") do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :email, class: "control-label col-sm-2" %>
+    <div class="col-sm-10">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password, class: "control-label col-sm-2" %>
+    <div class="col-sm-10">
+    <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-5">
+        <%= f.submit "Sign Up", class: "btn btn-large btn-primary " %>
+      </div>
+  </div>
+  <br>
+  <%= link_to "Already User!", signin_path, class: "btn btn-large" %>
+<% end %>

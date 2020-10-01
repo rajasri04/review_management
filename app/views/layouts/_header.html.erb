@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Panel view</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+        <div class="col-sm-1 sidenav">
+            <div class="wrapper">
+                <ul class="nav nav-pills nav-stacked">
+                    <li data-toggle="tooltip" data-placement="right" title="HOME"><a href=<%= root_path %>><i
+                            class="fa fa-fw fa-home" style='font-size:36px'></i></a></li>
+                    <li style='background-color:#d9b38c; height:40px; padding:0px;'><h4> APPS</h4></li>
+                    <%if signed_in? %>
+                    <h5><b>AS Panel</b></h5>
+                    <li data-toggle="tooltip" data-placement="right" title="PANEL VIEW"><a href=<%= staff_panel_index_path(current_user)%>><i class='fas fa-chalkboard-teacher' style='font-size:36px'></i></a></li>
+                    <span>panel view</span>
+                    <hr>
+                    <li data-toggle="tooltip" data-placement="right" title="GENERATE REPORT"><a href=<%= staff_progresses_path(current_user)%> ><i   class='fas fa-chart-line' style='font-size:36px'></i></a></li>
+                    <span>marks repo</span>
+                    <hr>
+                    <li data-toggle="tooltip" data-placement="right" title="Notification"><a href=<%= staff_messages_path(current_user) %>><i class='fas fa-bell' style='font-size:36px'></i></a>
+                    <span>notification</span>
+                    <hr>
+                    <!--<li data-toggle="tooltip" data-placement="right" title="Contact form"><a href="contact_form.html"><i
+                            class='fab fa-wpforms' style='font-size:36px'></i></a></li>-->
+
+                    <% if !current_user.projects.empty? %>
+                    <h5><b>AS Guide</b></h5>
+                    <li data-toggle="tooltip" data-placement="right" title="VIEW STUDENT"><a href=<%=displaystudent_staff_path(current_user)%>><i class='fas fa-user-graduate' style='font-size:36px'></i></a></li>
+                    <span>stu_repo</span>
+                    <hr>
+                    <li data-toggle="tooltip" data-placement="right" title="Abstract Correction"><a href=<%= staff_abstracts_path(current_user.id) %>><i class='fa fa-pencil-square-o' style='font-size:36px'></i></a>
+                    <span>Abstract Correction</span>
+
+                    <% end %>
+                    <% if current_user.admin? %>
+                    <hr>
+                    <h5><b>AS Project Coordinator</b></h5>
+                        <li data-toggle="tooltip" data-placement="right" title="Final Approval"><a href=<%= abstracts_path %>><i class='fa fa-check-square' style='font-size:36px'></i></a></li>
+                        <span>Final Approval</span>
+                    <% end %>
+                    <% end %>
+                    <%if signed_in_student? %>
+                    <li data-toggle="tooltip" data-placement="right" title="Show profile"><a href=<%= student_path(current_student)%>><i class='fas fa-chalkboard-teacher'
+                                                                     style='font-size:36px'></i></a></li>
+                   <span>Profile</span>
+                   <hr>
+                   <li data-toggle="tooltip" data-placement="right" title="Create Team"><a href=<%= student_groups_path(current_student) %>><i class="fa fa-users"
+                                                                    style='font-size:36px'></i></a></li>
+                   <span>Create group</span>
+                   <hr>
+                   <li data-toggle="tooltip" data-placement="right" title="VIEW MARKS"><a href=<%= marksdisplay_student_path(current_student.id)%> ><i
+                           class='fas fa-chart-line' style='font-size:36px'></i></a></li>
+                   <span>View Marks</span>
+                   <hr>
+                    <li data-toggle="tooltip" data-placement="right" title="Abstract Upload"><a href=<%= new_abstract_path %>><i class='fab fa-wpforms' style='font-size:36px'></i></a></li>
+                    <span>Abstract Upload</span>
+                    <% end %>
+
+              </ul>
+            </div>
+        </div>
+        <div class="col-sm-11 text-left">
+            <div class="bg_img">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                       <%= image_tag "smaller_ssn_logo.jpg",height: '50', width: '50'%>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav navbar-right" style="background-color: #bbf4ff; border-radius: 17px;">
+
+                              <% if signed_in? || signed_in_student? %>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                            data-toggle="dropdown">Profile<span
+                                            class="glyphicon glyphicon-log-in"></span></button>
+                                    <ul class="dropdown-menu">
+                                         <li><%= link_to "Profile",'#'%></li>
+                                         <% if signed_in? %>
+                                         <li><%= link_to "Reset password", signup_staffs_path %></li>
+                                         <%else%>
+                                         <li><%= link_to "Reset password", signup_students_path %></li>
+                                         <%end%>
+                                         <li><%= link_to "Sign out",signout_path %></li>
+
+                                    </ul>
+                                </div>
+                              <% else %>
+                                <li style="color:#e2d6e4; font-size: large;"><%= link_to "Sign in", signin_path %></li>
+                              <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+
+</body>
+</html>

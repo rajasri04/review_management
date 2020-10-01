@@ -1,0 +1,94 @@
+
+input[type=text],input[type=password], select, textarea, {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+#contactform {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.bg_img {
+    background-image: url("girl_net.jpg");
+    min-height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.navbar {
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.row.content {
+    height: 450px
+}
+
+.sidenav {
+    padding-top: 0px;
+    background-image: url("backimg.jpeg");
+    background-color: #b4b4b4;
+    height: 900px;
+    min-height: 1000px;
+    background-blend-mode: lighten;
+
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+
+    .li.h4 {
+        height: auto;
+    }
+
+}
+
+.notification {
+    border-radius: 10%;
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+    margin: 10px;
+    padding: 10px;
+}
+
+input[type=submit] {
+    width: 50%;
+    margin-top: 0;
+}
+
+.ui.list .item {
+    display: list-item;
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 10px 0em;
+    line-height: 1.2em;
+}
+
+.modal {
+    padding: 5%;
+ }
+ input[type="text"],textarea{
+  width:50%;
+  resize: vertical;
+}
+.feature{
+  padding : 10px;
+  margin:10px;
+}

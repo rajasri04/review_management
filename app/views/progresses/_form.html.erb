@@ -1,0 +1,44 @@
+<div id="progress_form">
+<%= form_for(@progress,url:staff_student_progresses_path(params[:staff_id],params[:student_id]))do |f| %>
+ <%= hidden_field(:progress, :student_id, :value => params[:student_id])%>
+ <%= hidden_field(:progress, :staff_id, :value => params[:staff_id])%>
+<p><h4>Name:</h4></p>
+<p><%= @student.name%></p>
+<p><h4>Register Number:</h4></p>
+<p><%= @student.reg_no%></p>
+<hr>
+<h3><b>Enter the marks review wise</b></h3>
+<div class="field">
+  <strong>REVIEW 0</strong><br>
+  <%= f.number_field :review0 %>
+</div>
+<div class="field">
+  <strong>REVIEW 1</strong><br>
+  <%= f.number_field :review1 %>
+</div>
+<div class="field">
+  <strong>REVIEW 2</strong><br>
+  <%= f.number_field :review2 %>
+</div>
+<div class="field">
+  <strong>REVIEW 3</strong><br>
+  <%= f.number_field :review3 %>
+</div>
+<hr>
+
+<div class="field">
+  <%=f.check_box(:approved, {}, true)%><b> Final Approval </b></br>
+</div>
+<div>
+  <p><b>Note: </b>Once approved,the marks cannot be edited later</p>
+</div>
+ <div class="field">
+  <%= f.label :comments%><br>
+  <%= f.text_area :comments%>
+  </div>
+
+ <div class="actions">
+   <%= f.submit "Record ur Opinion"%>
+ </div>
+<%end%>
+</div>

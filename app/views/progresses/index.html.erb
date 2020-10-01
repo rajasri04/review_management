@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing progresses by you </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Marks</th>
+      <th>Comments</th>
+      <th>Created at</th>
+      <th>Last Updated</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @progresses.each do |p|  if p!=nil%>
+      <tr>
+        <td><%= p.student.name %></td>
+        <td><b><%= p.marks %></b><br>
+            <span><b>Review 0 :</b><%=p.review0.present? ?  p.review0 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 1 :</b><%=p.review1.present? ?  p.review1 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 2 :</b><%=p.review2.present? ?  p.review2 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 3 :</b><%=p.review3.present? ?  p.review3 : "NOT PROVIDED" %></span>
+        </td>
+        <td><%= p.comments %></td>
+        <td><%= p.created_at.in_time_zone("Chennai")%></td>
+        <td><%= p.updated_at.in_time_zone("Chennai")%></td>
+        <%if p.approved == true%>
+          <td><%= link_to 'Show', staff_student_progress_path(p.staff_id,p.student_id,p.id) %></td>
+        <%else%>
+          <td><%= link_to 'Edit', edit_staff_student_progress_path(p.staff_id,p.student_id,p.id) %></td>
+        <%end%>
+      </tr>
+    <% end end %>
+  </tbody>
+</table>
+<h3>Download student overall mark details</h3>
+<%=  link_to 'Download as Excel',staff_progresses_path(current_user,format: :xls)%>
+<br>
+<br>
+<%if current_user.admin?%>
+<h1>All progress of your college student </h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Marks</th>
+      <th>Comments</th>
+      <th>Provided by</th>
+      <th>Last Updated</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%if current_user.admin?%>
+    <% Progress.all.each do |p|  if p!=nil%>
+      <tr>
+        <td><%= p.student.name %></td>
+        <td><b><%= p.marks %></b><br>
+            <span><b>Review 0 :</b><%=p.review0.present? ?  p.review0 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 1 :</b><%=p.review1.present? ?  p.review1 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 2 :</b><%=p.review2.present? ?  p.review2 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 3 :</b><%=p.review3.present? ?  p.review3 : "NOT PROVIDED" %></span>
+        </td>
+        <td><%= p.comments %></td>
+        <td><%= p.staff.name%></td>
+        <td><%= p.updated_at.in_time_zone("Chennai")%></td>
+        <%if p.approved == true%>
+          <td><%= link_to 'Show', staff_student_progress_path(p.staff_id,p.student_id,p.id) %></td>
+        <%else%>
+          <td><%= link_to 'Edit', edit_staff_student_progress_path(p.staff_id,p.student_id,p.id) %></td>
+        <%end%>
+      </tr>
+    <% end end end%>
+  </tbody>
+</table>
+<br>
+<%end%>

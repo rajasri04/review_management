@@ -1,0 +1,32 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= hidden_field(:project, :student_id, :value => params[:student_id])%>
+  <div class="field">
+    <%= f.label :Project_Title %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :Project_Description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+  <%= f.select(:panel_id, [['IMAGE PROCESSING', 1], ['WEBAPPS', 2], ['NETWORKS', 3],['SPEECH SIGNAL' , 4]]) %>
+  </div>
+  <div class="field">
+    <%= f.label :guide_email_id %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+
+<% end %>

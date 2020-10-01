@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Student Name:</strong>
+  <%= @student.name %>
+</p>
+<p>
+  <strong>Provided by:</strong>
+  <%= @staff.name %>
+</p>
+<p>
+  <strong>Review 0:</strong>
+  <%= @progress.review0 %>
+</p>
+
+<p>
+  <strong>Review 1:</strong>
+  <%= @progress.review1 %>
+</p>
+<p>
+  <strong>Review 2:</strong>
+  <%= @progress.review2 %>
+</p>
+
+<p>
+  <strong>Review 3:</strong>
+  <%= @progress.review3 %>
+</p>
+
+<p>
+  <strong>Marks:</strong>
+  <%= @progress.marks %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @progress.comments %>
+</p>
+<%if @progress.approved != true%>
+  <td><%= link_to 'Edit', edit_staff_student_progress_path(@staff.id,@student.id,@progress.id)  %></td>
+<%end%>
+
+<%= link_to 'Back', staff_path(current_user) %>

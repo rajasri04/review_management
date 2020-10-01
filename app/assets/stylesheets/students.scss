@@ -1,0 +1,36 @@
+// Place all the styles related to the Students controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+label{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 0px;
+  width: 16.66666667%;
+}
+input{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 83.33333333%;
+}
+ input[type="password"]{
+   width: 23%;
+ }
+ input[type=file]{
+   width: 23%;
+   display: inline-block;
+   margin-left: 16.66666667%;
+ }
+div .field{
+  margin: 21px;
+}
+#progress_form{
+  input{
+    width: 20%;
+  }
+  input[type=checkbox]{
+    width:30px;
+  }
+}

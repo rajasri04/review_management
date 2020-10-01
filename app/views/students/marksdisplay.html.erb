@@ -1,0 +1,42 @@
+<table class="table table-responsive table-striped">
+    <thead>
+    <tr>
+      <h4><%=@student.reg_no%></h4>
+      <h4><%=@student.name%></h4>
+    </tr>
+    <tr>
+        <th>Panel members</th>
+        <th>Marks</th>
+        <th>comments</th>
+        <th>Posted at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @progresses.each do |p| %>
+    <tr>
+        <td><%=p.staff.name%></td>
+        <td><b><%= p.marks %></b><br>
+            <span><b>Review 0 :</b><%=p.review0.present? ?  p.review0 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 1 :</b><%=p.review1.present? ?  p.review1 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 2 :</b><%=p.review2.present? ?  p.review2 : "NOT PROVIDED" %></span><br>
+            <span><b>Review 3 :</b><%=p.review3.present? ?  p.review3 : "NOT PROVIDED" %></span>
+        </td>
+        <td><%=p.comments%></td>
+        <td><%=p.updated_at.in_time_zone("Chennai")%></td>
+      </tr>
+   <% end %>
+    </tbody>
+</table>
+<hr>
+<div align="center">
+<h4><b>Mark Summary</b></h4>
+<hr>
+<span><b>Review 0 : </b><%= @student.rev0 %></span><br>
+<span><b>Review 1 : </b><%= @student.rev1 %></span><br>
+<span><b>Review 2 : </b><%= @student.rev2 %></span><br>
+<span><b>Review 3 : </b><%= @student.rev3 %></span><br>
+<div style="color:#1d8503; background-color:#e0d1d1; display:inline-block;">
+<span><b>INTERNAL MARKS:</b><%= @student.internal_marks %></span>
+</div>
+</div>
+<%= line_chart({"At first review" =>@student.rev0,"At second review" =>@student.rev1,"At third review" =>@student.rev2,"At fourth review" =>@student.rev3},{min: 0, max: 100})%>

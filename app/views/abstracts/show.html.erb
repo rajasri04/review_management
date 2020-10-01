@@ -1,0 +1,13 @@
+<%= render 'groups/show'%>
+<%= render 'projects/show'%>
+<h3><%= @abstract.name %></h3>
+<h6><b><%= link_to "Download abstract", @abstract.attachment_url %></b></h6>
+<%if @abstract.approved == nil%>
+<%= button_to "ACCEPT" ,accept_abstract_path(@abstract) %><br>
+<%= button_to "REJECT" , reject_abstract_path(@abstract) %>
+<%end%>
+<%if current_user.admin? && @abstract.approved == true && @abstract.final_approval!=true %>
+<h2>Need to be approved from Project Coordinator</h2>
+<%= button_to "ACCEPT" ,accept_abstract_path(@abstract) %><br>
+<%= button_to "REJECT" , reject_abstract_path(@abstract) %>
+<%end%>

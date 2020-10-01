@@ -1,0 +1,26 @@
+<%= form_for(@associate ,url: associate_index_path) do |f| %>
+  <% if @associate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@associate.errors.count, "error") %> prohibited relations from being saved:</h2>
+      <ul>
+      <% @associate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Student_regno %><br>
+    <%= f.number_field :regno %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Staff_emp_id %><br>
+    <%= f.text_field :emp_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

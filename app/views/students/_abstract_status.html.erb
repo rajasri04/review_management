@@ -1,0 +1,46 @@
+
+<%if current_student%>
+<%@abstracts= @student.abstracts%>
+<h2><b><%= "Abstract repository" if @abstracts.present? %></b></h2>
+<% @abstracts.each do |a| %>
+<p>
+  <strong>Name:</strong>
+  <%= a.name %>
+</p>
+
+<p>
+  <strong>Abstract link:</strong>
+  <%= link_to "Download abstract", a.attachment_url %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%if a.approved==true%>
+      <%="Guide approved your abstract and wait for final approval" if a.final_approval==nil%>
+      <%="Guide approved your abstract and rejected by project Coordinator.go and meet project_coordinator" if a.final_approval==false%>
+      <%="Your abstract is accepted " if a.final_approval==true%>
+  <%elsif a.approved==false%>
+      <%="rejected by Project Guide.go and meet Project Guide"%>
+  <%else%>
+      <%="Waiting for review"%>
+  <%end%>
+</p><hr>
+<%end%>
+<%end%>
+<%if current_user && panel(current_user)%>
+  <%@abstracts= @student.abstracts%>
+  <h2><b><%= "Abstract repository" if @abstracts.present? %></b></h2>
+  <% @abstracts.each do |a| %>
+    <% if a.approved ==true%>
+      <p>
+        <strong>Name:</strong>
+        <%= a.name %>
+      </p>
+      <p>
+        <strong>Abstract link:</strong>
+        <%= link_to "Download abstract", a.attachment_url %>
+        Uploaded at <%= a.created_at.in_time_zone("Chennai") %> and reviewed_at <%= a.updated_at.in_time_zone("Chennai") %>.
+      </p>
+      <hr>
+    <%end%>
+  <%end%>
+<%end%>

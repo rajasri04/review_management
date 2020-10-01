@@ -1,0 +1,104 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.a {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5EE2EA;
+}
+
+ul.a li {
+    float: left;
+}
+
+ul.a li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:20px;
+}
+
+ul.a li a:hover {
+    background-color: #23C8CD;
+}
+.header {
+    background-color: #E6F3F4;
+    padding: 20px;
+    text-align: center;
+}
+
+ul.b{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ul.b li b {
+    display: block;
+}
+
+ul.b li {
+    float: left;
+}
+ul.b li a:hover {
+    background-color: #23C8CD;
+}
+
+ul.b li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:20px;
+}
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+.feature{
+  margin:10%;
+  border-radius: 10%;
+}
+.features {
+    text-align: center;
+    font-family: ui-monospace;
+}
+.features h2{
+  font-weight: bold;
+
+}
+.features ul {
+    text-align: left;
+    line-height: 36px;
+    font-style: italic;
+    font-weight: bold;
+    list-style: circle;
+}

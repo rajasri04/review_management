@@ -1,0 +1,59 @@
+
+<% if signed_in? %>
+   <%= link_to "View Students"%><br>
+<% else %>
+<div class="center hero-unit">
+  <div class="header">
+  </div>
+  <br>
+  <div class="row">
+  <div class="col-sm-5 features">
+       <hr><h2>Trusted System</h2><hr>
+       <h3 align="center">A repository for managing project reports.<br>Store and display report statements of attendance and marks instantaneously to all the participants.</h3>
+       <br>
+       <ul class= "featurelisting">
+       <div class="row">
+       <div class="col-sm-5" >
+       <li>Team Management</li>
+       <li>Virtual Approval</li>
+       <li>Repository of Projects</li>
+       </div>
+      <div class="col-sm-1"></div>
+       <div class="col-sm-6" >
+       <li>Enhanced Review System</li>
+       <li>Easy to Use</li>
+       <li>Dashboard Management</li>
+       </div>
+       </div>
+       </ul>
+  </div>
+  <div class="col-sm-5">
+    <%= image_tag "ssnin.jpg" ,height: '450', width: '700',class: 'mySlides'%>
+    <%= image_tag "clocktower.jpg" ,height: '450', width: '700',class: 'mySlides' %>
+    <%= image_tag "ssnfountain.jpeg" ,height: '450', width: '700',class: 'mySlides' %>
+    <%= image_tag "placementssn.jpg" ,height: '450', width: '700',class: 'mySlides' %>
+  </div>
+  </div>
+  <!--<ul class="b">
+  <li><a href="" target=_"self"><div><div><b>guide</b></div></div></a></li>
+  <li><a href="" target=_"self"><div><div><b>panel member</b></div></div></a></li>
+  <li><a href="" target=_"self"><div><div><b>student</b></div></div></a></li>
+  </ul>-->
+  <script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}
+      x[myIndex-1].style.display = "block";
+      setTimeout(carousel, 1000); // Change image every 2 seconds
+    }
+  </script>
+</div>
+<%end %>
