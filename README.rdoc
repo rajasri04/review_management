@@ -1,28 +1,12 @@
-== README
+This is my College project collabrated with my friend Sridevi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tech stack used: RubyOnRails, Mysql
 
-Things you may want to cover:
+Project Title: REV-SYS: Streamlined Project Management Platform
 
-* Ruby version
+Description:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Developed a web-based application (REV-SYS) to enhance student project management within a college environment.
+Improved efficiency by automating report maintenance, management, and review processes.
+Facilitated real-time communication by enabling instant sharing of project updates and feedback among students, faculty guides, and administrators.
+Increased transparency through real-time access to attendance and progress reports.
